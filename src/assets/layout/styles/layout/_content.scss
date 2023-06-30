@@ -29,24 +29,7 @@
   list-style-type: none;
   flex: 1 1 auto;
 }
-.p-button-label {
-  flex: 0 0 auto !important;
-}
-.fieldset{
-  border: 1px solid rgb(192, 190, 190);
-}
-.custom-dropdown .p-dropdown-trigger {
-  border: none;
-  background-color: white;
+.pcard {
+  background-color: greenyellow !important;
 }
 
-legend, .label{
-  color: #0288D1;
-}
-legend:hover{
-  color: #d10202;
-}
-
-// .try{
-//   display: none;
-// }

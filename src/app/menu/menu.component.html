@@ -1,10 +1,10 @@
-<p>menu works!</p>
 <ul class="layout-menu">
   <h4>ADMIN NAVIGATOR</h4>
-  <p>Dashboard</p>
-  <p>Vendors</p>
-  <p>Buyers</p>
-  <p>Vehicles</p>
+  <p-divider></p-divider>
+  <p routerLink="/"><i class="pi pi-home"></i>  Dashboard</p>
+  <p routerLink="/vendors"><i class="pi pi-user"></i>  Vendors</p>
+  <p routerLink="/buyers"><i class="pi pi-users"></i>  Buyers</p>
+  <p routerLink="/vehicles"><i class="pi pi-car"></i>  Vehicles</p>
 
   <ng-container *ngFor="let item of model; let i = index;">
       <li app-menuitem *ngIf="!item.separator"></li>
