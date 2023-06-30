@@ -1,0 +1,52 @@
+.layout-main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 7rem 2rem 2rem 4rem;
+    transition: margin-left $transitionDuration;
+}
+
+.layout-main {
+    flex: 1 1 auto;
+}
+
+.deal-license-card {
+  padding-left: 1rem !important;
+}
+
+.p-tabview .p-tabview-nav {
+  background: #ffffff;
+  border: none;
+  padding-left: 2rem;
+  border-width: 0 0 2px 0;
+}
+
+.p-tabview-nav {
+  display: flex;
+  margin: auto;
+  padding: auto;
+  list-style-type: none;
+  flex: 1 1 auto;
+}
+.p-button-label {
+  flex: 0 0 auto !important;
+}
+.fieldset{
+  border: 1px solid rgb(192, 190, 190);
+}
+.custom-dropdown .p-dropdown-trigger {
+  border: none;
+  background-color: white;
+}
+
+legend, .label{
+  color: #0288D1;
+}
+legend:hover{
+  color: #d10202;
+}
+
+// .try{
+//   display: none;
+// }

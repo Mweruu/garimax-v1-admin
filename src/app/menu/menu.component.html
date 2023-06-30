@@ -1,0 +1,18 @@
+<p>menu works!</p>
+<ul class="layout-menu">
+  <h4>ADMIN NAVIGATOR</h4>
+  <p>Dashboard</p>
+  <p>Vendors</p>
+  <p>Buyers</p>
+  <p>Vehicles</p>
+
+  <ng-container *ngFor="let item of model; let i = index;">
+      <li app-menuitem *ngIf="!item.separator"></li>
+      <li *ngIf="item.separator" class="menu-separator"></li>
+  </ng-container>
+  <!-- <li>
+      <a href="https://www.primefaces.org/primeblocks-ng/#/">[item]="item" [index]="i" [root]="true"
+          <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'banner-primeblocks' : 'banner-primeblocks-dark'}}.png" alt="Prime Blocks" class="w-full mt-3"/>
+      </a>
+  </li> -->
+</ul>
