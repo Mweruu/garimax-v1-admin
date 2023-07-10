@@ -1,27 +1,28 @@
 <div class="formgroup-inline">
   <div class="col-12 md:col-3 lg:col-3" >
-    <p-card header="14509" routerLink="/vehicles" [style]="{ 'background-color':'lightblue'}">
+    <p-card header="{{verified}}" routerLink="/verifiedvehicles" [style]="{ 'background-color':'lightblue'}">
       <p class="m-0">
         Verified Vehicles
       </p>
     </p-card>
   </div>
   <div class="col-12 md:col-3 lg:col-3">
-    <p-card header="3" routerLink="/vehicles" [style]="{ 'background-color':'lightgreen'}">
+    <p-card header={{notverified}} routerLink="/vehicles" [style]="{ 'background-color':'lightgreen'}">
       <p class="m-0">
         Vehicles waiting to be verified
       </p>
     </p-card>
   </div>
   <div class="col-12 md:col-3 lg:col-3">
-    <p-card header="78" routerLink="/buyers" [style]="{ 'background-color':'lightcoral'}">
+    <p-card header="{{buyers}}" routerLink="/buyers" [style]="{ 'background-color':'lightcoral'}">
       <p class="m-0">
         Buyers
+        <!-- {{users.filter(item => !item.isVendor).length}} -->
       </p>
     </p-card>
   </div>
   <div class="col-12 md:col-3 lg:col-3">
-    <p-card header="456" routerLink="/vendors" [style]="{ 'background-color':'lightsalmon'}">
+    <p-card header="{{vendors}}" routerLink="/vendors" [style]="{ 'background-color':'lightsalmon'}">
       <p class="m-0">
         Vendors
       </p>

@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-vehicles',
-  templateUrl: './vehicles.component.html',
-  styleUrls: ['./vehicles.component.scss']
+  selector: 'app-verifiedvehicles',
+  templateUrl: './verifiedvehicles.component.html',
+  styleUrls: ['./verifiedvehicles.component.scss']
 })
-export class VehiclesComponent implements OnInit {
+export class VerifiedvehiclesComponent implements OnInit {
+
   vehicles:any;
   verified!:number
   notverified!:number
 
-  constructor( private ds:DataStorageService,
-               public router: Router,
-              ) { }
+  constructor( private ds:DataStorageService) { }
 
   ngOnInit(): void {
     this.getAllVehicles()
@@ -44,8 +42,6 @@ export class VehiclesComponent implements OnInit {
     );
 
   }
-  getVehicle(vehicleId: string){
-    this.router.navigateByUrl(`view/${vehicleId}`);
-  }
 
 }
+

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,18 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { ImageModule } from 'primeng/image';
+import { HttpClientModule } from '@angular/common/http';
+import { VerifiedvehiclesComponent } from './verifiedvehicles/verifiedvehicles.component';
+import { ViewComponent } from './view/view.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'primeng/carousel';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -27,7 +40,9 @@ import { ImageModule } from 'primeng/image';
     DashboardComponent,
     BuyersComponent,
     VendorsComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    VerifiedvehiclesComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +51,20 @@ import { ImageModule } from 'primeng/image';
     CardModule,
     TagModule,
     ImageModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    ImageModule,
+    DividerModule,
+    ReactiveFormsModule,
+    RouterModule,
+    DialogModule,
+    ButtonModule,
+    CarouselModule,
+    CheckboxModule,
+    TabMenuModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
