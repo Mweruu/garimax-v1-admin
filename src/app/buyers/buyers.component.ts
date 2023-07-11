@@ -17,7 +17,7 @@ export class BuyersComponent implements OnInit {
 
 
   getAllUsers(){
-    this.ds.getUsers().subscribe(
+    this.ds.adminGetUsers().subscribe(
       (users) => {
         this.users = users.users;
         console.log(users.users);

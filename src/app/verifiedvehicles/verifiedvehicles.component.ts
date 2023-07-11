@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verifiedvehicles',
@@ -12,14 +13,15 @@ export class VerifiedvehiclesComponent implements OnInit {
   verified!:number
   notverified!:number
 
-  constructor( private ds:DataStorageService) { }
+  constructor( private ds:DataStorageService,
+               private router: Router) { }
 
   ngOnInit(): void {
     this.getAllVehicles()
   }
 
   getAllVehicles(){
-    this.ds.getVehicles().subscribe(
+    this.ds.adminGetVehicles().subscribe(
       (vehicles) => {
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
@@ -41,6 +43,10 @@ export class VerifiedvehiclesComponent implements OnInit {
       }
     );
 
+  }
+
+  getVehicle(vehicleId: string){
+    this.router.navigateByUrl(`view/${vehicleId}`);
   }
 
 }

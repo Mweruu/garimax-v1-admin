@@ -21,7 +21,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   getAllVehicles(){
-    this.ds.getVehicles().subscribe(
+    this.ds.adminGetVehicles().subscribe(
       (vehicles) => {
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;

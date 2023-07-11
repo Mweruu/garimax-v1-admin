@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ENGINE, ELECTRICALS, TRANSMISSION_AND_CLUTCH, SUSPENSION_STEERING, TESTDRIVE, EXTERIOR, INTERIOR, AIRCONDITIONING_SYSTEM } from '../const-data/constants';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-view',
@@ -10,7 +11,6 @@ import { ENGINE, ELECTRICALS, TRANSMISSION_AND_CLUTCH, SUSPENSION_STEERING, TEST
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
-
 
     items!: MenuItem[];
     vehicle:any = {};
@@ -40,6 +40,8 @@ export class ViewComponent implements OnInit {
     phoneNumber:any;
     rating:any;
     value: number = 4;
+    selectedOptions:{ name: string, key: string }[] = [];;
+    assessment:any =[];
 
     responsiveOptions: any[] = [
       {
@@ -59,6 +61,8 @@ export class ViewComponent implements OnInit {
 
   constructor(private ds:DataStorageService,
               private activatedRoute: ActivatedRoute,
+              private messageService: MessageService,
+              private router: Router,
               ) { }
 
   async ngOnInit() {
@@ -121,14 +125,50 @@ export class ViewComponent implements OnInit {
   }
 
   verify(){
-    console.log(this.vehicle);
-    // const vehicleData = {
+    console.log(555,this.vehicle);
     this.vehicle.isVerified = true
-    // }
-    // this.ds.updateVehicle(this.currentVehicleId, vehicleData).subscribe(response => {
-    //   console.log('Vehicle Updated successfully!', response);
-    //   this.vehicle = response
-    // });
+
+    const vehicleData = {
+      verifiedVehicle:this.vehicle,
+      // assessment: this.selectedOptions.map(option => option.name),
+      assessment: this.selectedOptions.length > 0 ? this.selectedOptions.map(option => option.name) : []
+
+    }
+    console.log(54434,vehicleData)
+    console.log(54434,this.currentVehicleId)
+    this.ds.adminUpdateVehicle(this.currentVehicleId, vehicleData).subscribe(response => {
+      console.log("names gothere");
+      console.log('Vehicle Updated successfully!', response);
+      this.vehicle = response
+
+      this.messageService.add({
+        severity:'success',
+        summary:'Success',
+        detail:'Please wait for our team to verify your updated vehicle'
+      })
+      timer(2500).toPromise().then(()=>{
+        this.router.navigate(['/'])
+      })
+    },
+    error => {
+      console.error('Failed to update vehicle:', error);
+      // Handle error response here
+      this.messageService.add({
+        severity:'error',
+        summary:'Error',
+        detail:'Failed to update vehicle'
+      })
+
+      }
+    );
+    timer(2500).toPromise().then(()=>{
+      this.router.navigate(['/'])
+    })
+  }
+
+  onCheckboxChange() {
+    const names = this.selectedOptions.map(option => option.name);
+    console.log("names",names);
   }
 
 }

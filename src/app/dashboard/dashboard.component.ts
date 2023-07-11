@@ -23,13 +23,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllVehicles(){
-    this.ds.getVehicles().subscribe(
+    this.ds.adminGetVehicles().subscribe(
       (vehicles) => {
         this.vehicles=vehicles.vehicles
         console.log(vehicles.vehicles);
         console.log(vehicles.vehicles.length);
         this.records = vehicles.vehicles.length;
-        
+
         const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
         this.verified = verifiedObjects.length;
         console.log('Number of vendor objects:',this.verified );
@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllUsers(){
-    this.ds.getUsers().subscribe(
+    this.ds.adminGetUsers().subscribe(
       (users) => {
         console.log(users.users);
         this.users = users.users

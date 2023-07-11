@@ -29,6 +29,8 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { RatingModule } from 'primeng/rating';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -64,9 +66,11 @@ import { RatingModule } from 'primeng/rating';
     CarouselModule,
     CheckboxModule,
     TabMenuModule,
-    RatingModule
+    RatingModule,
+    ToastModule,
+
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

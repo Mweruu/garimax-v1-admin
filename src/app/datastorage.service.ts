@@ -29,6 +29,10 @@ export class DataStorageService {
   private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
   private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
   private updateVehicleUrl = `${BASE_URL}/api/user/updateVehicle`
+  private adminUpdateVehicleUrl = `${BASE_URL}/api/admin/updateVehicle`
+  private adminGetVehicleUrl = `${BASE_URL}/api/admin/getVehicles`;
+  private adminGetUsersUrl= `${BASE_URL}/api/admin/users`;
+
   user:any;
 
   constructor(private http: HttpClient) { }
@@ -42,6 +46,9 @@ export class DataStorageService {
   getUsers(): Observable<any> {
     return this.http.get<any>(`${this.getUsersUrl}`);
   }
+  adminGetUsers(): Observable<any> {
+    return this.http.get<any>(`${this.adminGetUsersUrl}`);
+  }
   getUser(id:string): Observable<any> {
     return this.http.get<any>(`${this.getSingleUserUrl}/${id}`);
   }
@@ -54,21 +61,25 @@ export class DataStorageService {
   createVehicle(vendor:any): Observable<any> {
     return this.http.post<any>(`${this.createVehicleUrl}`, vendor);
   }
-  getVehicles(): Observable<any> {
-    return this.http.get<any>(`${this.getVehicleUrl}`);
+  // getVehicles(): Observable<any> {
+  //   return this.http.get<any>(`${this.getVehicleUrl}`);
+  // }
+  adminGetVehicles(): Observable<any> {
+    return this.http.get<any>(`${this.adminGetVehicleUrl}`);
   }
   getVehicle(id:string): Observable<any> {
     return this.http.get<any>(`${this.getSingleVehicleUrl}/${id}`);
   }
   updateProfile(id:string, value:any){
-    console.log("yee",id)
     return this.http.put<any>(`${this.updateProfileUrl}/${id}`,value);
   }
   getUserVehicle(userId:string){
     return this.http.get<any>(`${this.getVehicleByUserId}/${userId}`);
   }
   updateVehicle(id:string, value:any){
-    console.log("yee",id)
     return this.http.put<any>(`${this.updateVehicleUrl}/${id}`,value);
+  }
+  adminUpdateVehicle(id:string, value:any){
+    return this.http.put<any>(`${this.adminUpdateVehicleUrl}/${id}`,value);
   }
 }

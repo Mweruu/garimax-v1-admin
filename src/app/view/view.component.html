@@ -1,4 +1,5 @@
 <app-topbar></app-topbar>
+<p-toast></p-toast>
 <p>view works!</p>
 <div class="card"> </div>
 <div class="view mb-5">
@@ -96,7 +97,7 @@
             </div>
           </div>
         </div>
-      <p-divider></p-divider>
+      <!-- <p-divider></p-divider>
       <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
         <div class="flex justify-content-center">
           <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full text-xl"></p-button>
@@ -186,7 +187,7 @@
               <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
             </div>
           </p-dialog>
-      </div>
+      </div> -->
       <p-divider></p-divider>
       <div class="flex align-items-center justify-content-between mb-5 gap-5">
         <div class="flex align-items-center">
@@ -194,6 +195,8 @@
         </div>
         <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
       </div>
+      {{vehicle.user?.phoneNumber}}
+
       </div>
     </div>
 
@@ -207,7 +210,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
         <div class="formgroup-inline">
           <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="engine" [inputId]="engine.key"></p-checkbox>
+            <p-checkbox name="group" [value]="engine" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="engine.key"></p-checkbox>
             <label [for]="engine.key">{{ engine.name }}</label>
           </div>
         </div>
@@ -216,7 +219,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Electricals'">
         <div class="formgroup-inline">
           <div *ngFor="let electrical of electricals" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key"></p-checkbox>
+            <p-checkbox name="group" [value]="electrical" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="electrical.key"></p-checkbox>
             <label [for]="electrical.key">{{ electrical.name }}</label>
           </div>
         </div>
@@ -225,7 +228,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Transmissson & Clutch'">
         <div class="formgroup-inline">
           <div *ngFor="let clutch of clutches" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key"></p-checkbox>
+            <p-checkbox name="group" [value]="clutch" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="clutch.key"></p-checkbox>
             <label [for]="clutch.key">{{ clutch.name }}</label>
           </div>
         </div>
@@ -234,7 +237,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Suspension & Steering'">
         <div class="formgroup-inline">
           <div *ngFor="let suspension of suspensions" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key"></p-checkbox>
+            <p-checkbox name="group" [value]="suspension" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="suspension.key"></p-checkbox>
             <label [for]="suspension.key">{{ suspension.name }}</label>
           </div>
         </div>
@@ -243,7 +246,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Test Drive'">
         <div class="formgroup-inline">
           <div *ngFor="let testdrive of testdrives" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key"></p-checkbox>
+            <p-checkbox name="group" [value]="testdrive" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="testdrive.key"></p-checkbox>
             <label [for]="testdrive.key">{{ testdrive.name }}</label>
           </div>
         </div>
@@ -252,7 +255,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Exterior'">
         <div class="formgroup-inline">
           <div *ngFor="let exterior of exteriors" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key"></p-checkbox>
+            <p-checkbox name="group" [value]="exterior" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="exterior.key"></p-checkbox>
             <label [for]="exterior.key">{{ exterior.name }}</label>
           </div>
         </div>
@@ -261,7 +264,7 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Interior'">
         <div class="formgroup-inline">
           <div *ngFor="let interior of interiors" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="interior" [inputId]="interior.key"></p-checkbox>
+            <p-checkbox name="group" [value]="interior" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="interior.key"></p-checkbox>
             <label [for]="interior.key">{{ interior.name }}</label>
           </div>
         </div>
@@ -270,15 +273,17 @@
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
         <div class="formgroup-inline">
           <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key"></p-checkbox>
+            <p-checkbox name="group" [value]="airsystem" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()" [inputId]="airsystem.key"></p-checkbox>
             <label [for]="airsystem.key">{{ airsystem.name }}</label>
           </div>
         </div>
       </div>
   </div>
+  <div *ngIf="!vehicle.isVerified" class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
+    <button pButton pRipple label="Verify" (click)="verify()" class=" col-5 md:col-5 lg:col-5 p-3 text-xl" type="submit"></button>
+    <button pButton pRipple label="Reject" class="col-5 md:col-5 lg:col-5  p-3 text-xl ml-5" type="submit"></button>
 
-<p-button  icon="pi pi-fw pi-check-circle" label="Verify" styleClass="p-button-success w-full text-xl" (onClick)="verify()"></p-button>
-
+  </div>
 </div>
 
 <app-footer></app-footer>
