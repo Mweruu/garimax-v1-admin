@@ -26,10 +26,6 @@ export class UserprofileComponent implements OnInit {
           console.log("DATA", user)})
       }
     });
-    // this.currentUserId = 2;
-    // this.ds.getUser(this.currentUserId).subscribe(user => {
-    //   this.user = user;
-    //   console.log("DATA", user)})
     console.log("gothere")
 
   }
