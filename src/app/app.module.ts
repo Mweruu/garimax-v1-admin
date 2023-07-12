@@ -31,6 +31,10 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { RatingModule } from 'primeng/rating';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { PanelModule } from 'primeng/panel';
+import { ThumbnailsDirective } from './thumbnails.directive';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,8 @@ import { MessageService } from 'primeng/api';
     VehiclesComponent,
     VerifiedvehiclesComponent,
     ViewComponent,
+    UserprofileComponent,
+    ThumbnailsDirective,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,8 @@ import { MessageService } from 'primeng/api';
     TabMenuModule,
     RatingModule,
     ToastModule,
-
+    TableModule,
+    PanelModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

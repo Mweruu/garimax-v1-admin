@@ -1,8 +1,7 @@
 <app-topbar></app-topbar>
 <p-toast></p-toast>
-<p>view works!</p>
-<div class="card"> </div>
-<div class="view mb-5">
+<div class="mt-8 pt-5">
+  <div class="view mb-5">
   <div class="card grid p-fluid" >
     <div class="col-12 md:col-12 lg:col-5">
       <div class="card">
@@ -17,7 +16,7 @@
               </div> -->
               <p-carousel [value]="vehicle.images" [numVisible]="5" [numScroll]="1">
                 <ng-template let-image pTemplate="item" class="img-slide">
-                  <img src="{{image}}" alt="Image" width="80px" height="50px" appThumbnails>
+                  <img src="{{image}}" alt="Image"  width="69px" height="38px" appThumbnails>
                 </ng-template>
               </p-carousel>
             </div>
@@ -203,10 +202,12 @@
   <div class="col-12 md:col-12 lg:col-12 mt-2" style="text-align: center;">
     <u class="font-bold"><h5>Conditional Assessment</h5></u>
   </div>
+
   <div class="card col-12 md:col-12 lg:col-12">
     <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
   </div>
       <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'"></div>
+
       <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
         <div class="formgroup-inline">
           <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
@@ -279,10 +280,54 @@
         </div>
       </div>
   </div>
-  <div *ngIf="!vehicle.isVerified" class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
-    <button pButton pRipple label="Verify" (click)="verify()" class=" col-5 md:col-5 lg:col-5 p-3 text-xl" type="submit"></button>
-    <button pButton pRipple label="Reject" class="col-5 md:col-5 lg:col-5  p-3 text-xl ml-5" type="submit"></button>
+  <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
+    <button pButton pRipple [label]="vehicle.isVerified ? 'Update': 'Verify'" (click)="verify()" class=" col-5 md:col-5 lg:col-5 p-3 text-xl" type="submit"></button>
 
+    <!-- <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= "Foreign Used" [icon]="vehicle.usage === 'Foreign Used' ? 'pi pi-check': 'pi pi-times'"  class="ml-1"></p-tag> -->
+    <button pButton pRipple label="Reject" (click)="showChatDialog()" class="col-5 md:col-5 lg:col-5  p-3 text-xl ml-5" type="submit"></button>
+    <!-- <p-button label="Reject" styleClass="p-button-info w-full text-xl" type="submit" (click)="showChatDialog()"></p-button> -->
+    <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
+        <h5>SEND INQUIRY FOR THIS CAR</h5>
+        <p-divider></p-divider>
+        <div class="formgrid">
+          <div class="field">
+            <label>Your name</label>
+            <span class="p-input-icon-left">
+              <!-- <i class="pi pi-user"></i> -->
+              <input type="text" pInputText value=" {{vehicle.user?.firstName}}"/>
+            </span>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <span class="p-input-icon-left">
+              <!-- <i class="pi pi-envelope"></i> -->
+              <input type="email" pInputText value=" {{vehicle.user?.email}}"/>
+            </span>
+          </div>
+          <div class="field">
+            <label>Mobile number</label>
+            <span class="p-input-icon-left">
+              <!-- <i class="pi pi-phone"></i> -->
+              <input type="text" pInputText value=" {{vehicle.user?.phoneNumber}}"/>
+            </span>
+          </div>
+          <div class="field">
+            <label>Address</label>
+            <span class="p-input-icon-left">
+              <!-- <i class="pi pi-location"></i> -->
+              <input type="text" pInputText value=" {{vehicle.user?.address}}"/>
+            </span>
+          </div>
+          <div class="field">
+            <label>Reason for rejection</label>
+            <span class="p-input-icon-left">
+              <textarea rows="5" cols="30" pInputTextarea class="w-full"></textarea>
+            </span>
+          </div>
+          <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+        </div>
+    </p-dialog>
+  </div>
   </div>
 </div>
 

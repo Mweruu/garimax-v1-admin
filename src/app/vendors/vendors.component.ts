@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendors',
@@ -9,7 +10,8 @@ import { DataStorageService } from '../datastorage.service';
 export class VendorsComponent implements OnInit {
   users:any;
 
-  constructor(private ds:DataStorageService) { }
+  constructor(private ds:DataStorageService,
+              private router :Router) { }
 
   ngOnInit(): void {
     this.getAllUsers()
@@ -26,6 +28,11 @@ export class VendorsComponent implements OnInit {
         console.error(error);
       }
     );
+
+  }
+  getUser(userId:string){
+    this.router.navigateByUrl(`userprofile/${userId}`);
+    console.log(userId)
 
   }
 

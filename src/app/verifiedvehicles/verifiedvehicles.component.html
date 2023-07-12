@@ -1,53 +1,53 @@
-<p>vehicles works!</p>
 <app-topbar></app-topbar>
-<div class="card"></div>
-<div *ngFor="let vehicle of vehicles">
-  <div *ngIf="vehicle.isVerified">
-    <div class="vehicles-card flex mb-3">
-    <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufacture.toLowerCase().includes(searchText)">
-    <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.location.toLowerCase().includes(searchFilter)"> -->
-        <div class="grid" style="cursor: pointer;">
-        <div class="col-5 md:col-5 lg:col-5 flex align-items-center justify-content-center">
-            <div class="p-fluid">
-              <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-            </div>
-        </div>
-        <div class="col-7 md:col-7 lg:col-7 flex align-items-center justify-content-center">
-          <div class="col-12 md:col-12 lg:col-12 ">
-            <div routerLink="/view" (click)="getVehicle(vehicle.id)">
-            <div class="mt-2">
-            <p-tag severity="danger" value="{{vehicle.usage}}" class="m-2"></p-tag>
-            <p-tag severity="info" value="{{vehicle.condition}}" class="m-2"></p-tag>
-            <p-tag severity="info" value="{{vehicle.isVerified}}" class="m-2"></p-tag>
-
-              <!-- <p-tag [severity]="vehicle.condition === 'Used' ? 'info':'danger'" value={{vehicle.condition}} class="m-2"></p-tag>
-              <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= {{vehicle.usage}} class="ml-1"></p-tag> -->
-              <!-- <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= "Foreign Used" [icon]="vehicle.usage === 'Foreign Used' ? 'pi pi-check': 'pi pi-times'"  class="ml-1"></p-tag> -->
-              <!-- <p-tag [severity]="vehicle.usage === 'Locally Used' ? 'info':'danger'" value= "Locally Used" [icon]="vehicle.usage === 'Locally Used' ? 'pi pi-check': 'pi pi-times'" class="ml-2"></p-tag> -->
-            </div>
-          <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
-            <h6 class="m-2">
-              {{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
-            </h6>
-            <p class="m-2">
-              <strong>
-                {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
-              </strong>
-            </p>
-            <p class="m-2">{{vehicle.description}}...</p>
-            <p-divider></p-divider>
-            </div>
-
-            <!-- <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating> -->
-            <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              <span class="text-2xl font-semibold">
-              <img src={{vehicle.image}} alt="logo" height="30" class="mb-3">
-              </span>
-            </div>
-          </div>
-        </div>
-        </div>
+<div class="mt-8 pt-5">
+  <div class="p-col-12 mb-2">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-search"></i>
+      </span>
+      <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText"  />
     </div>
   </div>
+  <div class="card flex mb-3">
+    <p-table [value]="vehicles" >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Vehicles
+            <p-button icon="pi pi-refresh"></p-button>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Color</th>
+              <th>Mileage</th>
+              <th></th>
+              <th></th>
+
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-vehicle>
+          <tr *ngIf="vehicle.isVerified" routerLink="/view" (click)="getVehicle(vehicle.id)">
+              <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
+              <td>{{vehicle.make}}</td>
+              <td>{{vehicle.model}}</td>
+              <td><p-image src="{{vehicle.image}}" alt="Image" width="138px" height="75px" [preview]="true"></p-image></td>
+              <td>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</td>
+              <td>{{vehicle.color}}</td>
+              <td>{{vehicle.mileage| number: '1.0-0' }} KM</td>
+
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            <!-- In total there are {{vehicle ? vehicle.length : 0 }} products. -->
+        </div>
+      </ng-template>
+    </p-table>
+</div>
 </div>
 <app-footer></app-footer>

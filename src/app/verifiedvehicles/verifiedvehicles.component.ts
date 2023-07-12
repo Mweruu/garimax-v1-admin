@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./verifiedvehicles.component.scss']
 })
 export class VerifiedvehiclesComponent implements OnInit {
-
+  searchText:string = '';
   vehicles:any;
   verified!:number
   notverified!:number

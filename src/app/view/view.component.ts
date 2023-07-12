@@ -32,13 +32,6 @@ export class ViewComponent implements OnInit {
     contactVisible = false;
     chatVisible =false;
     thumbnailUrl!:string;
-    currentUserId!:string;
-    user:any;
-    userId:any;
-    email:any;
-    firstName:any;
-    phoneNumber:any;
-    rating:any;
     value: number = 4;
     selectedOptions:{ name: string, key: string }[] = [];;
     assessment:any =[];
@@ -122,8 +115,13 @@ export class ViewComponent implements OnInit {
   }
   showChatDialog() {
     this.chatVisible = true;
-  }
+    this.vehicle.isVerified = false
 
+  }
+  reject(){
+    this.vehicle.isVerified = false
+
+  }
   verify(){
     console.log(555,this.vehicle);
     this.vehicle.isVerified = true
@@ -131,7 +129,7 @@ export class ViewComponent implements OnInit {
     const vehicleData = {
       verifiedVehicle:this.vehicle,
       // assessment: this.selectedOptions.map(option => option.name),
-      assessment: this.selectedOptions.length > 0 ? this.selectedOptions.map(option => option.name) : []
+      assessment: this.selectedOptions.length > 0 ? this.selectedOptions.map(option => option.name) : [],
 
     }
     console.log(54434,vehicleData)

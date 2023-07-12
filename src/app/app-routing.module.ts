@@ -6,6 +6,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { BuyersComponent } from './buyers/buyers.component';
 import { VerifiedvehiclesComponent } from './verifiedvehicles/verifiedvehicles.component';
 import { ViewComponent } from './view/view.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 const routes: Routes = [
   {path: '', component:LayoutComponent,},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'vehicles', component:VehiclesComponent,},
   {path: 'verifiedvehicles', component:VerifiedvehiclesComponent,},
   {path: 'view/:vehicleId', component:ViewComponent,},
+  {path: 'userprofile/:id', component:UserprofileComponent,},
 
 ];
 

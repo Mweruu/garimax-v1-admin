@@ -1,0 +1,51 @@
+<app-topbar></app-topbar>
+<div class="profile-display"></div>
+<div class="mt-8 pt-5">
+  <div class="formgroup-inline">
+    <div class="col-10 md:col-10 lg:col-10">
+      <p-panel header="{{user?.firstName}} account" [toggleable]="true">
+        <div class="col-12 pb-3 pt-3" >
+          <div class="formgroup-inline mb-5" >
+            <div class="col-12 md:col-12 lg:col-7">
+              <div class="card flex align-items-center justify-content-center">
+                <p-image src="{{user?.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
+              </div>
+            </div>
+            <div class="card col-12 md:col-12 lg:col-5 ">
+              <div class=" justify-content-center align-items-center">
+                <div class="mb-0 field col">
+                  <h5><strong>{{user?.firstName}}</strong></h5>
+                </div>
+              </div>
+              <div class=" formgroup-inline col-10 md:col-10 lg:col-10">
+                <div class="col-12 md:col-12 lg:col-5 p-fluid">
+                  <div class="field">
+                    <label for="url" class="block text-900 font-medium mb-2">Website</label>
+                    <a href="{{user?.companyUrl}}">{{user?.companyUrl}}</a>
+                  </div>
+                  <div class="field">
+                    <label for="phoneNumber" class="block text-900 font-medium mb-2">Contact</label>
+                    <p>{{user?.phoneNumber}}</p>
+                  </div>
+                  <div class="field">
+                    <label for="email" class="block text-900 font-medium mb-2">Email</label>
+                    <p>{{user?.email}}</p>
+                  </div>
+                  <div class="field">
+                    <label for="phoneNumber" class="block text-900 font-medium mb-2">Address</label>
+                    <p>{{user?.address}}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- <p-divider></p-divider>
+              <p-rating></p-rating>
+              <p-divider></p-divider> -->
+            </div>
+          </div>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

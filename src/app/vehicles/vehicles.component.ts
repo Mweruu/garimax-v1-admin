@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,10 @@ export class VehiclesComponent implements OnInit {
   vehicles:any;
   verified!:number
   notverified!:number
+  searchText:string = '';
+
+   @Output()
+  searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
 
   constructor( private ds:DataStorageService,
                public router: Router,
@@ -44,8 +48,14 @@ export class VehiclesComponent implements OnInit {
     );
 
   }
+
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
+  }
+
+  onSearchTextEntered(searchValue:string){
+    this.searchText =searchValue;
+    console.log(1,this.searchText)
   }
 
 }
