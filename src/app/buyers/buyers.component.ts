@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
 })
 export class BuyersComponent implements OnInit {
   users:any;
+  totalRecords!:number;
 
   constructor(private ds:DataStorageService,
               private router :Router) { }
 
   ngOnInit(): void {
     this.getAllUsers()
+
   }
 
 
@@ -22,6 +24,9 @@ export class BuyersComponent implements OnInit {
     this.ds.adminGetUsers().subscribe(
       (users) => {
         this.users = users.users;
+        const buyerObjects = this.users.filter((obj: { isVendor: any; }) => !obj.isVendor);
+        this.totalRecords = buyerObjects.length;
+        console.log('Number of vendor objects:',this.totalRecords );
         console.log(users.users);
       },
       (error) => {

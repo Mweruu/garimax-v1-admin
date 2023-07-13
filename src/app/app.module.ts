@@ -35,6 +35,9 @@ import { TableModule } from 'primeng/table';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { PanelModule } from 'primeng/panel';
 import { ThumbnailsDirective } from './thumbnails.directive';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,9 @@ import { ThumbnailsDirective } from './thumbnails.directive';
     ToastModule,
     TableModule,
     PanelModule,
+    PaginatorModule,
+    PanelMenuModule,
+    SidebarModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

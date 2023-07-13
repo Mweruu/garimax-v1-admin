@@ -12,6 +12,8 @@ export class VehiclesComponent implements OnInit {
   verified!:number
   notverified!:number
   searchText:string = '';
+  first: number = 0;
+
 
    @Output()
   searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
@@ -37,7 +39,7 @@ export class VehiclesComponent implements OnInit {
           const dateB = new Date(b.updatedAt);
           return dateB.getTime() - dateA.getTime();
         });
-        const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => !obj.isVerified);
+        const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
         this.verified = verifiedObjects.length;
         const notverifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => !obj.isVerified);
         this.notverified = notverifiedObjects.length;
@@ -57,5 +59,6 @@ export class VehiclesComponent implements OnInit {
     this.searchText =searchValue;
     console.log(1,this.searchText)
   }
+
 
 }

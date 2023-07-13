@@ -1,7 +1,11 @@
 <app-topbar></app-topbar>
 <div class="mt-5 pt-5">
   <div class="card">
-    <p-table [value]="users">
+    <p-table [value]="users"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[5,10,20]">
       <!-- styleClass="p-datatable-gridlines" -->
       <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
@@ -21,7 +25,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-user>
           <tr *ngIf="user.isVendor" routerLink="/userprofile" (click)="getUser(user.id)">
-            <td><p-image src="{{user.profileImage}}" alt="Image" width="138px" height="75px" [preview]="true"></p-image></td>
+            <td><p-image src="{{user.profileImage}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
             <td>{{user.firstName}}</td>
             <td>{{user.email}}</td>
             <td>{{user.phoneNumber}}</td>

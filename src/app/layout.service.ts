@@ -35,7 +35,7 @@ export class LayoutService {
   state: LayoutState = {
       staticMenuDesktopInactive: false,
       overlayMenuActive: false,
-      profileSidebarVisible: false,
+      profileSidebarVisible: true,
       configSidebarVisible: false,
       staticMenuMobileActive: false,
       menuHoverActive: false
@@ -48,7 +48,7 @@ export class LayoutService {
   configUpdate$ = this.configUpdate.asObservable();
 
   overlayOpen$ = this.overlayOpen.asObservable();
-  
+
   constructor() { }
 
 

@@ -8,8 +8,16 @@
       <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText"  />
     </div>
   </div>
+
   <div class="card flex mb-3">
-    <p-table [value]="vehicles" >
+    <p-table #dt
+            [value]="vehicles"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[1,3,5,10,20]"
+            [globalFilterFields]="['make', 'model', 'yearOfManufacture', 'price']"
+            >
       <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             Vehicles
@@ -25,27 +33,22 @@
               <th>Price</th>
               <th>Color</th>
               <th>Mileage</th>
-              <th></th>
-              <th></th>
-
+              <th>Usage</th>
+              <th>Condition</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-vehicle>
           <tr *ngIf="vehicle.isVerified" routerLink="/view" (click)="getVehicle(vehicle.id)">
-              <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
+            <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
               <td>{{vehicle.make}}</td>
               <td>{{vehicle.model}}</td>
-              <td><p-image src="{{vehicle.image}}" alt="Image" width="138px" height="75px" [preview]="true"></p-image></td>
+              <td><p-image src="{{vehicle.image}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
               <td>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</td>
               <td>{{vehicle.color}}</td>
               <td>{{vehicle.mileage| number: '1.0-0' }} KM</td>
-
+              <td>{{vehicle.usage}}</td>
+              <td>{{vehicle.condition}}</td>
           </tr>
-      </ng-template>
-      <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">
-            <!-- In total there are {{vehicle ? vehicle.length : 0 }} products. -->
-        </div>
       </ng-template>
     </p-table>
 </div>

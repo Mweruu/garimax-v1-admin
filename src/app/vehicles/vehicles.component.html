@@ -9,7 +9,12 @@
     </div>
   </div>
     <div class="card">
-        <p-table [value]="vehicles">
+        <p-table [value]="vehicles"
+        [paginator]="true"
+        [rows]="10"
+        [rowsPerPageOptions]="[5,10,20]"
+        [showCurrentPageReport]="true"
+        >
           <!-- styleClass="p-datatable-gridlines" -->
           <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
@@ -17,7 +22,7 @@
                 <p-button icon="pi pi-refresh"></p-button>
             </div>
           </ng-template>
-          <ng-template pTemplate="header">
+          <ng-template pTemplate="header" let-columns>
               <tr>
                   <th>Year</th>
                   <th>Make</th>
@@ -28,7 +33,6 @@
                   <th>Mileage</th>
                   <th>Usage</th>
                   <th>Condition</th>
-
               </tr>
           </ng-template>
           <ng-template pTemplate="body" let-vehicle>
@@ -36,7 +40,7 @@
                   <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
                   <td>{{vehicle.make}}</td>
                   <td>{{vehicle.model}}</td>
-                  <td><p-image src="{{vehicle.image}}" alt="Image" width="138px" height="75px" [preview]="true"></p-image></td>
+                  <td><p-image src="{{vehicle.image}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
                   <td>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</td>
                   <td>{{vehicle.color}}</td>
                   <td>{{vehicle.mileage| number: '1.0-0' }} KM</td>

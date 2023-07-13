@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 export class VerifiedvehiclesComponent implements OnInit {
   searchText:string = '';
   vehicles:any;
-  verified!:number
-  notverified!:number
+  verified!:number;
+  notverified!:number;
+  rows = 10;
 
   constructor( private ds:DataStorageService,
                private router: Router) { }
@@ -33,7 +34,7 @@ export class VerifiedvehiclesComponent implements OnInit {
           const dateB = new Date(b.updatedAt);
           return dateB.getTime() - dateA.getTime();
         });
-        const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => !obj.isVerified);
+        const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
         this.verified = verifiedObjects.length;
         const notverifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => !obj.isVerified);
         this.notverified = notverifiedObjects.length;
