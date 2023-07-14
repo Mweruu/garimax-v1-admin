@@ -25,7 +25,11 @@ a {
 
 .layout-wrapper {
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    height: 100%;
 }
+
 .mid-display {
   padding-right: 100px !important;
 }
@@ -56,4 +60,41 @@ fieldset {
   display: flex;
   align-items: center;
   text-align: center;
+}
+// .admin-page{}
+.d-item{
+  display: flex;
+  text-align: center;
+  color: var(--surface-0);
+  justify-content: space-between;
+
+  .pi{
+    font-size: 3em;
+    margin-bottom: 15px;
+  }
+
+  .name{
+    font-size: 1em;
+  }
+
+  .number{
+    font-size: 3em;
+    float: right;
+  }
+}
+.d-verified{
+  background-color: #dadafc;
+  background-image: linear-gradient(147deg, #dadafc 8%, #4547a9 74%);
+}
+.d-notverified{
+  background-color: #22c55e;
+  background-image: linear-gradient(147deg, #caf1d8 8%, #22c55e 74%);
+}
+.d-vendor{
+  background-color: #ffaca7;
+  background-image: linear-gradient(147deg, #ffaca7 8%, #ff2525 74%);
+}
+.d-buyer{
+  background-color: #c3edf5;
+  background-image: linear-gradient(147deg, #c3edf5 8%, #326fd1 74%);
 }

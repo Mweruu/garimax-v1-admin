@@ -5,8 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
-import { MenuComponent } from './menu/menu.component';
-import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BuyersComponent } from './buyers/buyers.component';
@@ -38,13 +36,15 @@ import { ThumbnailsDirective } from './thumbnails.directive';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { SidebarModule } from 'primeng/sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { PasswordModule } from 'primeng/password';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    MenuComponent,
-    TopbarComponent,
     FooterComponent,
     DashboardComponent,
     BuyersComponent,
@@ -54,6 +54,9 @@ import { SidebarModule } from 'primeng/sidebar';
     ViewComponent,
     UserprofileComponent,
     ThumbnailsDirective,
+    SidebarComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +85,7 @@ import { SidebarModule } from 'primeng/sidebar';
     PaginatorModule,
     PanelMenuModule,
     SidebarModule,
+    PasswordModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

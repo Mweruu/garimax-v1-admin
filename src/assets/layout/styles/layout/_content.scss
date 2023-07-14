@@ -8,7 +8,9 @@
 }
 
 .layout-main {
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
+    width: calc(100% - 175px);
+    margin-left: 175px;
 }
 
 .deal-license-card {
@@ -32,4 +34,5 @@
 .pcard {
   background-color: greenyellow !important;
 }
+
 

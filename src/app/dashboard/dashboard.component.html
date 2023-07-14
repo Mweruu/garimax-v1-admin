@@ -1,31 +1,56 @@
-<div class="formgroup-inline">
-  <div class="col-12 md:col-3 lg:col-3" >
-    <p-card header="{{verified}}" routerLink="/verifiedvehicles" [style]="{ 'background-color':'lightblue'}">
-      <p class="m-0">
-        Verified Vehicles
-      </p>
-    </p-card>
-  </div>
-  <div class="col-12 md:col-3 lg:col-3">
-    <p-card header={{notverified}} routerLink="/vehicles" [style]="{ 'background-color':'lightgreen'}">
-      <p class="m-0">
-        Vehicles waiting to be verified
-      </p>
-    </p-card>
-  </div>
-  <div class="col-12 md:col-3 lg:col-3">
-    <p-card header="{{buyers}}" routerLink="/buyers" [style]="{ 'background-color':'lightcoral'}">
-      <p class="m-0">
-        Buyers
-        <!-- {{users.filter(item => !item.isVendor).length}} -->
-      </p>
-    </p-card>
-  </div>
-  <div class="col-12 md:col-3 lg:col-3">
-    <p-card header="{{vendors}}" routerLink="/vendors" [style]="{ 'background-color':'lightsalmon'}">
-      <p class="m-0">
-        Vendors
-      </p>
-    </p-card>
-  </div>
+<div class="admin-page">
+  <p-card header="Dashboard" subheader="Latest Updates">
+    <div class="grid">
+      <div class="col-3">
+        <p-card styleClass="d-verified" routerLink="/verifiedvehicles">
+          <div class="d-item">
+            <div>
+              <!-- <i class="pi pi-car"></i> -->
+              <span class="name">Verified Vehicles</span>
+            </div>
+            <span class="number">{{verified}}</span>
+          </div>
+        </p-card>
+        <!-- <p-card header="{{verified}}" routerLink="/verifiedvehicles" [style]="{ 'background-color':'lightblue'}">
+          <p class="m-0">
+            Verified Vehicles
+          </p>
+        </p-card> -->
+      </div>
+
+      <div class="col-3">
+        <p-card styleClass="d-notverified" routerLink="/vehicles">
+          <div class="d-item">
+            <div>
+              <!-- <i class="pi pi-car"></i> -->
+              <span class="name">Vehicles waiting to be verified</span>
+            </div>
+            <span class="number">{{notverified}}</span>
+          </div>
+        </p-card>
+      </div>
+      <div class="col-3">
+        <p-card styleClass="d-buyer" routerLink="/buyers">
+          <div class="d-item">
+            <div>
+              <!-- <i class="pi pi-car"></i> -->
+              <span class="name">Buyers</span>
+            </div>
+            <span class="number">{{buyers}}</span>
+          </div>
+        </p-card>
+      </div>
+      <div class="col-3">
+        <p-card styleClass="d-vendor" routerLink="/vendors">
+          <div class="d-item">
+            <div>
+              <!-- <i class="pi pi-car"></i> -->
+              <span class="name">Vendors</span>
+            </div>
+            <span class="number">{{vendors}}</span>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </p-card>
 </div>

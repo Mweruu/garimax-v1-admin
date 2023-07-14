@@ -1,56 +1,57 @@
-<app-topbar></app-topbar>
-<div class="mt-8 pt-5">
-  <div class="p-col-12 mb-2">
+  <!-- <div class="p-col-12 mb-2">
     <div class="p-inputgroup">
       <span class="p-inputgroup-addon">
         <i class="pi pi-search"></i>
       </span>
       <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText"  />
     </div>
-  </div>
-
-  <div class="card flex mb-3">
-    <p-table #dt
-            [value]="vehicles"
-            [paginator]="true"
-            [rows]="10"
-            [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[1,3,5,10,20]"
-            [globalFilterFields]="['make', 'model', 'yearOfManufacture', 'price']"
-            >
-      <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            Vehicles
-            <p-button icon="pi pi-refresh"></p-button>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-          <tr>
-              <th>Year</th>
-              <th>Make</th>
-              <th>Model</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Color</th>
-              <th>Mileage</th>
-              <th>Usage</th>
-              <th>Condition</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-vehicle>
-          <tr *ngIf="vehicle.isVerified" routerLink="/view" (click)="getVehicle(vehicle.id)">
-            <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
-              <td>{{vehicle.make}}</td>
-              <td>{{vehicle.model}}</td>
-              <td><p-image src="{{vehicle.image}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
-              <td>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</td>
-              <td>{{vehicle.color}}</td>
-              <td>{{vehicle.mileage| number: '1.0-0' }} KM</td>
-              <td>{{vehicle.usage}}</td>
-              <td>{{vehicle.condition}}</td>
-          </tr>
-      </ng-template>
-    </p-table>
+  </div> -->
+<div class="admin-page">
+  <p-card header="Verified Vehicles" subheader="List of all verified vehicles">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-table #dt
+                [value]="vehicles"
+                [paginator]="true"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[1,3,5,10,20]"
+                [globalFilterFields]="['make', 'model', 'yearOfManufacture', 'price']"
+                >
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Vehicles
+                <p-button icon="pi pi-refresh"></p-button>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>Year</th>
+                  <th>Make</th>
+                  <th>Model</th>
+                  <th>Image</th>
+                  <th>Price</th>
+                  <th>Color</th>
+                  <th>Mileage</th>
+                  <th>Usage</th>
+                  <th>Condition</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-vehicle>
+              <tr *ngIf="vehicle.isVerified" routerLink="/view" (click)="getVehicle(vehicle.id)">
+                <td>{{vehicle.yearOfManufacture.split('-')[0]}}</td>
+                  <td>{{vehicle.make}}</td>
+                  <td>{{vehicle.model}}</td>
+                  <td><p-image src="{{vehicle.image}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
+                  <td>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</td>
+                  <td>{{vehicle.color}}</td>
+                  <td>{{vehicle.mileage| number: '1.0-0' }} KM</td>
+                  <td>{{vehicle.usage}}</td>
+                  <td>{{vehicle.condition}}</td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
 </div>
-</div>
-<app-footer></app-footer>

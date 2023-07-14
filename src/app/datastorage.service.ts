@@ -20,6 +20,7 @@ export class DataStorageService {
   private getUsersUrl= `${BASE_URL}/api/users`;
   private userLoginUrl = `${BASE_URL}/api/users/login`;
   private createUserUrl = `${BASE_URL}/api/users/register`;
+  private createAdminUrl = `${BASE_URL}/api/admin/register`;
   private createindividualVendorUrl = `${BASE_URL}/api/singleVendor/register`;
   private createcompanyVendorUrl = `${BASE_URL}/api/coVendor/register`;
   private createVehicleUrl = `${BASE_URL}/api/addVehicle`;
@@ -37,6 +38,9 @@ export class DataStorageService {
 
   constructor(private http: HttpClient) { }
 
+  createAdmin(user: any): Observable<any> {
+    return this.http.post<any>(`${this.createAdminUrl}`, user);
+  }
   createUser(user: any): Observable<any> {
     return this.http.post<any>(`${this.createUserUrl}`, user);
   }

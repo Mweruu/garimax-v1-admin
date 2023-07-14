@@ -1,44 +1,46 @@
-<app-topbar></app-topbar>
-<div class="mt-5 pt-5">
-  <div class="card">
-    <p-table [value]="users"
-            [paginator]="true"
-            [rows]="10"
-            [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[5,10,20]">
-      <!-- styleClass="p-datatable-gridlines" -->
-      <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            Vendors
-            <p-button icon="pi pi-refresh"></p-button>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-          <tr>
-            <th>Profile Image</th>
-            <th>Name</th>
-              <th>Email</th>
-              <th>Phone number</th>
-              <th>Url</th>
-              <th>Address</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-user>
-          <tr *ngIf="user.isVendor" routerLink="/userprofile" (click)="getUser(user.id)">
-            <td><p-image src="{{user.profileImage}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phoneNumber}}</td>
-            <td>{{user.companyUrl}}</td>
-            <td>{{user.address}}</td>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">
-            <!-- In total there are {{vehicle ? vehicle.length : 0 }} products. -->
-        </div>
-      </ng-template>
-    </p-table>
-  </div>
+<div class="admin-page">
+  <p-card header="Vendors" subheader="List of all vendors">
+    <div class="p-grid">
+      <div class="p-col-12">
+      <p-table [value]="users"
+              [paginator]="true"
+              [rows]="10"
+              [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[5,10,20]">
+        <!-- styleClass="p-datatable-gridlines" -->
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              Vendors
+              <p-button icon="pi pi-refresh"></p-button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+              <th>Profile Image</th>
+              <th>Name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Url</th>
+                <th>Address</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr *ngIf="user.isVendor" routerLink="/userprofile" (click)="getUser(user.id)">
+              <td><p-image src="{{user.profileImage}}" alt="Image" width="46px" height="25px" [preview]="true"></p-image></td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phoneNumber}}</td>
+              <td>{{user.companyUrl}}</td>
+              <td>{{user.address}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+              <!-- In total there are {{vehicle ? vehicle.length : 0 }} products. -->
+          </div>
+        </ng-template>
+      </p-table>
+      </div>
+    </div>
+  </p-card>
 </div>
-<app-footer></app-footer>

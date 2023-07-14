@@ -8,7 +8,7 @@ import { LayoutService } from '../layout.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public layoutService: LayoutService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
