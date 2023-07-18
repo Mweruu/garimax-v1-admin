@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-  <div class="view mb-5">
+<div class="view mb-5">
   <div class="card grid p-fluid" >
     <div class="col-12 md:col-12 lg:col-5">
       <div class="card">
@@ -7,11 +7,6 @@
           <div class="container">
             <div class="img-container">
               <img src="{{vehicle?.image}}" alt="Image" width="100%" id="preview">
-              <!-- <div class="img-prev">
-                <div class="img-slide" *ngFor="let image of vehicle.images">
-                  <img src="{{image}}" alt="Image" width="100%" appThumbnails>
-                </div>
-              </div> -->
               <p-carousel [value]="vehicle.images" [numVisible]="5" [numScroll]="1">
                 <ng-template let-image pTemplate="item" class="img-slide">
                   <img src="{{image}}" alt="Image"  width="69px" height="38px" appThumbnails>
@@ -29,10 +24,10 @@
         </div>
         <div class="col-12 md:col-12 lg:col-12">
           <div class="formgroup-inline" >
-            <div *ngFor="let accessory of vehicle.accessories" class="col-12 md:col-12 lg:col-12">
-              <!-- <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text"></p-button> -->
-                <div>{{ accessory }}</div>
+            <div *ngIf="vehicle && vehicle.accessories && vehicle.accessories.length > 0">
+              <div>{{ vehicle.accessories[0] }}</div>
             </div>
+
           </div>
         </div>
         <div class="grid formgrid">

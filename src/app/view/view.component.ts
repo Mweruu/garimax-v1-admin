@@ -66,7 +66,7 @@ export class ViewComponent implements OnInit {
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle)
-          console.log(vehicle.userId)
+          console.log(vehicle.accessories[0])
 
           this.images = vehicle.images
         });
