@@ -18,21 +18,19 @@
           <ng-template pTemplate="header" let-columns>
               <tr>
                 <th>Profile Image</th>
-                <th>Name</th>
+                <th>Username</th>
                   <th>Email</th>
                   <th>Phone number</th>
                   <th>Url</th>
-                  <th>Address</th>
               </tr>
           </ng-template>
           <ng-template pTemplate="body" let-user>
               <tr *ngIf="!user.isVendor" routerLink="/userprofile" (click)="getUser(user.id)">
                 <td><p-image src="{{user.profileImage}}" alt="Image" width="46px" height="25px"  [preview]="true"></p-image></td>
-                <td>{{user.firstName}}</td>
+                <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.companyUrl}}</td>
-                <td>{{user.address}}</td>
               </tr>
           </ng-template>
           <ng-template pTemplate="summary">

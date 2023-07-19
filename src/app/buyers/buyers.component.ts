@@ -28,6 +28,7 @@ export class BuyersComponent implements OnInit {
         this.totalRecords = buyerObjects.length;
         console.log('Number of vendor objects:',this.totalRecords );
         console.log(users.users);
+
       },
       (error) => {
         console.error(error);

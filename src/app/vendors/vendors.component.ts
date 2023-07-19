@@ -25,6 +25,12 @@ export class VendorsComponent implements OnInit {
       (users) => {
         this.users = users.users;
         console.log(users.users);
+        for (const user of this.users){
+          console.log(user.copVendor);
+          console.log("single",user.singleVendor);
+          // console.log(user.copVendor['address']);
+
+        }
       },
       (error) => {
         console.error(error);
