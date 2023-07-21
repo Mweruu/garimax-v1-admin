@@ -3,7 +3,10 @@
     <img src="assets/layout/images/garimax-logo2.png"  alt="logo" width="75px" height="45px">
     <!-- <span class="links" routerLink="/dashboard">GARIMAX</span> -->
   </div>
-  <div class="links">
+  <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+  <div  #topbarmenu class="links layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
     <ul>
       <li>
         <a routerLink="/userprofile"  (click)="getUser(userId)"><i class="pi"></i> <strong>Hello! {{ username ? username: '' }}</strong></a>

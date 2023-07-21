@@ -13,6 +13,15 @@
     margin-left: 175px;
 }
 
+@media (max-width: 991px) {
+  .layout-main {
+    // flex: 1 1 auto;
+    width: calc(100% - 100px);
+    margin-left: 100px;
+}
+}
+
+
 .deal-license-card {
   padding-left: 1rem !important;
 }

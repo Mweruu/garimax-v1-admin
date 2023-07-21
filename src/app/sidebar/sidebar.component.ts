@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,9 +13,16 @@ export class SidebarComponent implements OnInit {
   isVendor!:boolean;
   userId: any;
 
+
+  @ViewChild('menubutton') menuButton!: ElementRef;
+
+  @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
+
+  @ViewChild('topbarmenu') menu!: ElementRef;
+
   constructor( public router: Router,
                private authService: AuthService,
-
+               public layoutService: LayoutService,
      ) { }
 
   ngOnInit(): void {
