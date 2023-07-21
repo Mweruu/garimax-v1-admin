@@ -8,7 +8,7 @@
   </div> -->
 <div class="admin-page">
   <p-card header="Verified Vehicles" subheader="List of all verified vehicles">
-    <div class="p-grid">
+    <div class="p-grid" *ngIf="userId">
       <div class="p-col-12">
         <p-table #dt
                 [value]="vehicles"

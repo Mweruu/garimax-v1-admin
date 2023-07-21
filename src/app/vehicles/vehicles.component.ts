@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -13,17 +14,31 @@ export class VehiclesComponent implements OnInit {
   notverified!:number
   searchText:string = '';
   first: number = 0;
-
+  username:any;
+  isVendor!:boolean;
+  userId: any;
 
    @Output()
   searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
 
   constructor( private ds:DataStorageService,
                public router: Router,
-              ) { }
+               private authService: AuthService,
+               ) { }
 
   ngOnInit(): void {
-    this.getAllVehicles()
+    this.getAllVehicles();
+    this.getUsersCreds();
+
+  }
+
+  getUsersCreds(){
+    const userData = this.authService.getUserCredentials()
+    this.username = userData.name;
+    this.userId = userData.userId;
+    this.isVendor = userData.isVendor
+    console.log('User Data:',userData);
+
   }
 
   getAllVehicles(){

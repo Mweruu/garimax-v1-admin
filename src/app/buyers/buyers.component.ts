@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-buyers',
@@ -10,15 +11,29 @@ import { Router } from '@angular/router';
 export class BuyersComponent implements OnInit {
   users:any;
   totalRecords!:number;
+  username:any;
+  isVendor!:boolean;
+  userId: any;
 
   constructor(private ds:DataStorageService,
-              private router :Router) { }
+              private router :Router,
+              private authService: AuthService,
+              ) { }
 
   ngOnInit(): void {
-    this.getAllUsers()
+    this.getAllUsers();
+    this.getUsersCreds();
 
   }
 
+  getUsersCreds(){
+    const userData = this.authService.getUserCredentials()
+    this.username = userData.name;
+    this.userId = userData.userId;
+    this.isVendor = userData.isVendor
+    console.log('User Data:',userData);
+
+  }
 
   getAllUsers(){
     this.ds.adminGetUsers().subscribe(

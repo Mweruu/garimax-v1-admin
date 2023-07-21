@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-verifiedvehicles',
@@ -13,12 +14,28 @@ export class VerifiedvehiclesComponent implements OnInit {
   verified!:number;
   notverified!:number;
   rows = 10;
+  username:any;
+  isVendor!:boolean;
+  userId: any;
 
   constructor( private ds:DataStorageService,
-               private router: Router) { }
+               private router: Router,
+               private authService: AuthService,
+               ) { }
 
   ngOnInit(): void {
-    this.getAllVehicles()
+    this.getAllVehicles();
+    this.getUsersCreds();
+
+  }
+
+  getUsersCreds(){
+    const userData = this.authService.getUserCredentials()
+    this.username = userData.name;
+    this.userId = userData.userId;
+    this.isVendor = userData.isVendor
+    console.log('User Data:',userData);
+
   }
 
   getAllVehicles(){

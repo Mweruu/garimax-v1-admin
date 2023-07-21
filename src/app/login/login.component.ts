@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { DataStorageService } from '../datastorage.service';
 import { LayoutService } from '../layout.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
                private ds: DataStorageService,
-              //  private authService: AuthService,
+               private authService: AuthService,
                private router: Router,
                private messageService: MessageService) { }
 
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
         if(response.user.isAdmin){
         console.log('User authenticated', response);
         console.log('User authenticated Mweru123', response.user.isAdmin ,user.isAdmin);
+        this.authService.setUserCredentials(response);
 
         console.log(response.token)
         // this.authService.setUserCredentials(response);
@@ -66,7 +68,7 @@ export class LoginComponent implements OnInit {
           detail:'User authenticated'
         })
         timer(2500).toPromise().then(()=>{
-          this.router.navigate(['/'])
+          this.router.navigate(['/dashboard'])
 
         })}else{
           console.error('admin not found:');
@@ -82,7 +84,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           // this.showAlert(" User Authenticated ")
-          // this.router.navigate(['/']);
+          // this.router.navigate(['/dashboard']);
         }
       }},
       error => {

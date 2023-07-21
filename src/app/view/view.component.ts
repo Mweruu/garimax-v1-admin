@@ -145,7 +145,7 @@ export class ViewComponent implements OnInit {
         detail:'Please wait for our team to verify your updated vehicle'
       })
       timer(2500).toPromise().then(()=>{
-        this.router.navigate(['/'])
+        this.router.navigate(['/dashboard'])
       })
     },
     error => {
@@ -160,7 +160,7 @@ export class ViewComponent implements OnInit {
       }
     );
     timer(2500).toPromise().then(()=>{
-      this.router.navigate(['/'])
+      this.router.navigate(['/dashboard'])
     })
   }
 

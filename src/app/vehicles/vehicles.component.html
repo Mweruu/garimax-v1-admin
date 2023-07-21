@@ -9,7 +9,7 @@
   </div> -->
 <div class="admin-page">
   <p-card header="Vehicles" subheader="List of all non-verified vehicles">
-    <div class="p-grid">
+    <div class="p-grid"  *ngIf="userId">
       <div class="p-col-12">
         <p-table [value]="vehicles"
         [paginator]="true"

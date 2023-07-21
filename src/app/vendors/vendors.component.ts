@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-vendors',
@@ -9,14 +10,28 @@ import { Router } from '@angular/router';
 })
 export class VendorsComponent implements OnInit {
   users:any;
-
-
+  username:any;
+  isVendor!:boolean;
+  userId: any;
 
   constructor(private ds:DataStorageService,
-              private router :Router) { }
+              private router :Router,
+              private authService: AuthService,
+              ) { }
 
   ngOnInit(): void {
-    this.getAllUsers()
+    this.getAllUsers();
+    this.getUsersCreds();
+
+  }
+
+  getUsersCreds(){
+    const userData = this.authService.getUserCredentials()
+    this.username = userData.name;
+    this.userId = userData.userId;
+    this.isVendor = userData.isVendor
+    console.log('User Data:',userData);
+
   }
 
 
@@ -28,7 +43,6 @@ export class VendorsComponent implements OnInit {
         for (const user of this.users){
           console.log(user.copVendor);
           console.log("single",user.singleVendor);
-          // console.log(user.copVendor['address']);
 
         }
       },

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../datastorage.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +15,28 @@ export class DashboardComponent implements OnInit {
   buyers!:number;
   vendors!:number;
   users:any;
+  username:any;
+  isVendor!:boolean;
+  userId: any;
 
-  constructor(private ds:DataStorageService) { }
+
+  constructor(private ds:DataStorageService,
+              private authService: AuthService,
+    ) { }
 
   ngOnInit(): void {
     this.getAllVehicles();
     this.getAllUsers();
+    this.getUsersCreds();
+  }
+
+  getUsersCreds(){
+    const userData = this.authService.getUserCredentials()
+    this.username = userData.name;
+    this.userId = userData.userId;
+    this.isVendor = userData.isVendor
+    console.log('User Data:',userData);
+
   }
 
   getAllVehicles(){
