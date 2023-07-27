@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../datastorage.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/auth.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,23 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
-import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BuyersComponent } from './buyers/buyers.component';
-import { VendorsComponent } from './vendors/vendors.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-
 import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { ImageModule } from 'primeng/image';
 import { HttpClientModule } from '@angular/common/http';
-import { VerifiedvehiclesComponent } from './verifiedvehicles/verifiedvehicles.component';
-import { ViewComponent } from './view/view.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -30,16 +20,25 @@ import { RatingModule } from 'primeng/rating';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
-import { UserprofileComponent } from './userprofile/userprofile.component';
 import { PanelModule } from 'primeng/panel';
 import { ThumbnailsDirective } from './thumbnails.directive';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { SidebarModule } from 'primeng/sidebar';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { LoginComponent } from './login/login.component';
 import { PasswordModule } from 'primeng/password';
-import { SignupComponent } from './signup/signup.component';
+
+import { BuyersComponent } from './pages/buyers/buyers.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
+import { UserprofileComponent } from './pages/userprofile/userprofile.component';
+import { VehiclesComponent } from './pages/vehicles/vehicles.component';
+import { VendorsComponent } from './pages/vendors/vendors.component';
+import { VerifiedvehiclesComponent } from './pages/verifiedvehicles/verifiedvehicles.component';
+import { ViewComponent } from './pages/view/view.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SignupComponent } from './shared/signup/signup.component';
 
 @NgModule({
   declarations: [

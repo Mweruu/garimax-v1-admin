@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { LayoutService } from '../layout.service';
+import { AuthService } from 'src/app/auth.service';
+import { LayoutService } from 'src/app/layout.service';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { DataStorageService } from '../datastorage.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/auth.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 
 @Component({
   selector: 'app-vehicles',

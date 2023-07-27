@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ENGINE, ELECTRICALS, TRANSMISSION_AND_CLUTCH, SUSPENSION_STEERING, TESTDRIVE, EXTERIOR, INTERIOR, AIRCONDITIONING_SYSTEM } from '../const-data/constants';
 import { timer } from 'rxjs';
+import { ENGINE, ELECTRICALS, TRANSMISSION_AND_CLUTCH, SUSPENSION_STEERING, TESTDRIVE, EXTERIOR, INTERIOR, AIRCONDITIONING_SYSTEM } from 'src/app/const-data/constants';
 
 @Component({
   selector: 'app-view',

@@ -3,9 +3,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
-import { DataStorageService } from '../datastorage.service';
-import { LayoutService } from '../layout.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/auth.service';
+import { DataStorageService } from 'src/app/datastorage.service';
+import { LayoutService } from 'src/app/layout.service';
 
 @Component({
   selector: 'app-login',
