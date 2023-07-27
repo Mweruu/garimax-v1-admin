@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { VendorsComponent } from './vendors/vendors.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-import { BuyersComponent } from './buyers/buyers.component';
-import { VerifiedvehiclesComponent } from './verifiedvehicles/verifiedvehicles.component';
-import { ViewComponent } from './view/view.component';
-import { UserprofileComponent } from './userprofile/userprofile.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { BuyersComponent } from './pages/buyers/buyers.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
+import { UserprofileComponent } from './pages/userprofile/userprofile.component';
+import { VehiclesComponent } from './pages/vehicles/vehicles.component';
+import { VendorsComponent } from './pages/vendors/vendors.component';
+import { VerifiedvehiclesComponent } from './pages/verifiedvehicles/verifiedvehicles.component';
+import { ViewComponent } from './pages/view/view.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+import { SignupComponent } from './shared/signup/signup.component';
+
 
 const routes: Routes = [
   {path: '', component:LayoutComponent,
